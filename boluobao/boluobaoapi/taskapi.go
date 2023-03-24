@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-//var ReadTaskList = []string{"user/tasks/4", "user/tasks/5", "user/tasks/17"}
-
 type Task struct {
 	AccountId string
 }

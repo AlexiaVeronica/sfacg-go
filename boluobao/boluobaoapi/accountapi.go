@@ -37,11 +37,10 @@ func UserCommentAPI(AccountId string, page int) *gjson.Result {
 	return VerifyAPI(request.Get("users/" + AccountId + "/dynamics").AddAll(params).Json())
 }
 
-func LOGIN_ACCOUNT(username string, password string) string {
+func LoginAccountAPI(username string, password string) string {
 	var Cookie string
-	params := map[string]string{"username": username, "password": password}
-	response := request.Post("sessions").AddAll(params).Unmarshal(&Template.Login)
-	if Template.Login.Status.HTTPCode == 200 {
+	response := request.Post("sessions").AddAll(map[string]string{"username": username, "password": password})
+	if VerifyAPI(response.Json()) != nil {
 		for _, cookie := range response.GetCookie() {
 			Cookie += cookie.Name + "=" + cookie.Value + ";"
 		}

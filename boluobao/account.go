@@ -19,7 +19,7 @@ func UserLogin(username string, password string, retry int) {
 		retry = 3
 	}
 	for i := 0; i < retry; i++ {
-		response := boluobaoapi.LOGIN_ACCOUNT(username, password)
+		response := boluobaoapi.LoginAccountAPI(username, password)
 		if response != "" {
 			fmt.Println("登录成功")
 			break
