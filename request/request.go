@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/VeronicaAlexia/BoluobaoAPI/Template"
 	"github.com/tidwall/gjson"
 	"io"
 	"net/http"
@@ -20,17 +19,7 @@ type HttpUtils struct {
 	query_data     *url.Values
 	DataFormString string
 	ResultBody     []byte
-	Config         Template.ConfigRequest
-}
-
-func NewHttpUtils(host string, path string, method string, Config Template.ConfigRequest) *HttpUtils {
-	return &HttpUtils{
-		method:     method,
-		query_data: &url.Values{},
-		url:        host + path,
-		Cookie:     Config.Cookie,
-		Config:     Config,
-	}
+	Config         ConfigRequest
 }
 
 func (is *HttpUtils) Request() *HttpUtils {

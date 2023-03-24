@@ -1,6 +1,7 @@
 package boluobao
 
 import (
+	"fmt"
 	"github.com/VeronicaAlexia/BoluobaoAPI/boluobao/boluobaoapi"
 	"github.com/VeronicaAlexia/BoluobaoAPI/pkg/threading"
 	"github.com/tidwall/gjson"
@@ -45,7 +46,7 @@ func (book *NovelInit) NovelContent(chapter_id string) string {
 	return ""
 }
 
-func (book *NovelInit) NovelSearch(keyword string, lastPage int) []gjson.Result {
+func NovelSearch(keyword string, lastPage int) []gjson.Result {
 	var BookInfoList []gjson.Result
 	Thread := threading.InitThreading(32)
 	for i := 0; i < lastPage; i++ {
@@ -54,6 +55,7 @@ func (book *NovelInit) NovelSearch(keyword string, lastPage int) []gjson.Result 
 			defer Thread.Done()
 			response := boluobaoapi.SearchAPI(keyword, page)
 			if response != nil {
+				fmt.Println(response)
 				//for _, data := range response.Data.Novels {
 				for _, data := range response.Get("data.novels").Array() {
 					BookInfoList = append(BookInfoList, data)

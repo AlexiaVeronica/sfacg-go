@@ -7,6 +7,7 @@ import (
 )
 
 func SearchAPI(keyword string, page int) *gjson.Result {
-	return VerifyAPI(request.Get("search/novels/result").AddAll(
-		map[string]string{"q": keyword, "page": strconv.Itoa(page), "size": "50"}).Json())
+	params := map[string]string{"q": keyword, "page": strconv.Itoa(page), "size": "50"}
+	//fmt.Println(request.Get("search/novels/result").AddAll(params))
+	return VerifyAPI(request.Get("search/novels/result").AddAll(params).Json())
 }
