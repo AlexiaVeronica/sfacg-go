@@ -7,7 +7,7 @@ import (
 )
 
 func SearchAPI(keyword string, page int) *gjson.Result {
-	params := map[string]string{
+	return VerifyAPI(request.Get("search/novels/result/new").Data(map[string]string{
 		"q":          keyword,
 		"expand":     "novels,comics,albums,chatnovelstags,typeName,authorName,intro,latestchaptitle,latestchapintro,tags,sysTags",
 		"sort":       "hot",
@@ -16,7 +16,6 @@ func SearchAPI(keyword string, page int) *gjson.Result {
 		"systagids":  "",
 		"isFinish":   "-1",
 		"updateDays": "-1",
-	}
-	return VerifyAPI(request.Get("search/novels/result/new").Data(params).Json())
+	}).Json())
 
 }

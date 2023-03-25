@@ -58,8 +58,6 @@ func NovelSearch(keyword string, lastPage int) []gjson.Result {
 			defer Thread.Done()
 			response := boluobaoapi.SearchAPI(keyword, page)
 			if response != nil {
-				fmt.Println(response)
-				//for _, data := range response.Data.Novels {
 				for _, data := range response.Get("data.novels").Array() {
 					BookInfoList = append(BookInfoList, data)
 				}

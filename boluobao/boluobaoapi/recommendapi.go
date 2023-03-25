@@ -15,6 +15,10 @@ func NovelActPushAPI() *gjson.Result {
 
 func NovelRecommendAPI(pushNames string) *gjson.Result {
 	// pushNames: hotpush, newpush,
-	return VerifyAPI(request.Get("novels/specialpushs").Data(
-		map[string]string{"pushNames": pushNames, "page": "0", "size": "10", "expand": "sysTags,homeFlag"}).Json())
+	return VerifyAPI(request.Get("novels/specialpushs").Data(map[string]string{
+		"pushNames": pushNames,
+		"page":      "0",
+		"size":      "10",
+		"expand":    "sysTags,homeFlag",
+	}).Json())
 }
