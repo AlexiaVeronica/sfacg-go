@@ -6,10 +6,8 @@ import (
 	"testing"
 )
 
-// BookDelite NovelDelite
-
 func TestInformation(t *testing.T) {
 	res := boluobao.NovelInit{BookId: "222494"}
-	fmt.Println(res.NovelInfo().Get("novelName").String())
+	fmt.Println(res.NovelInfo().Book.LastUpdateTime)
 	fmt.Println("--------------------------------------------------")
 }

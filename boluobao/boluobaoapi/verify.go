@@ -3,6 +3,7 @@ package boluobaoapi
 import (
 	"fmt"
 	"github.com/tidwall/gjson"
+	"unsafe"
 )
 
 // VerifyAPI 验证API的code是否为200
@@ -14,4 +15,10 @@ func VerifyAPI(response gjson.Result) *gjson.Result {
 	}
 	return nil
 
+}
+
+type Empty struct{}
+
+func IsEmptyStruct(obj interface{}) bool {
+	return unsafe.Sizeof(obj) == unsafe.Sizeof(Empty{})
 }
