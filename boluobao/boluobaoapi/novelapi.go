@@ -9,7 +9,7 @@ import (
 
 func NovelInformationAPI(NovelId string) *gjson.Result {
 	expand := "chapterCount,bigBgBanner,bigNovelCover,typeName,intro,fav,ticket,pointCount,tags,sysTags,signlevel,discount,discountExpireDate,totalNeedFireMoney,rankinglist,originTotalNeedFireMoney,firstchapter,latestchapter,latestcommentdate,essaytag,auditCover,preOrderInfo,customTag,topic,unauditedCustomtag,homeFlag,isbranch"
-	return VerifyAPI(request.Get(fmt.Sprintf("novels/%v", NovelId)).Add("expand", expand).Json())
+	return VerifyAPI(request.Get(fmt.Sprintf("novels/%v", NovelId)).Data(map[string]string{"expand": expand}).Json())
 }
 
 func NovelPocketAPI(NovelId string) *gjson.Result {
@@ -29,6 +29,6 @@ func NovelFeedAPI(page int, f bool) *gjson.Result {
 		filter = "latest"
 	}
 	expand := "novels,comics,albums,tags,sysTags,authorName,hasfollowed"
-	return VerifyAPI(request.Get("user/feeds").AddAll(map[string]string{
+	return VerifyAPI(request.Get("user/feeds").Data(map[string]string{
 		"filter": filter, "expand": expand, "page": strconv.Itoa(page), "size": "20"}).Json())
 }

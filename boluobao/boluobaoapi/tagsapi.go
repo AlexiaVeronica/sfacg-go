@@ -7,7 +7,7 @@ import (
 )
 
 func TagAPI(TagID string, page int) *gjson.Result {
-	return VerifyAPI(request.Get("novels/0/sysTags/novels").AddAll(
+	return VerifyAPI(request.Get("novels/0/sysTags/novels").Data(
 		map[string]string{
 			"systagids":      TagID,
 			"isfree":         "both",
@@ -23,5 +23,5 @@ func TagAPI(TagID string, page int) *gjson.Result {
 }
 
 func SysTagAPI() *gjson.Result {
-	return VerifyAPI(request.Get("novels/0/sysTags").Add("filter", "push").Json())
+	return VerifyAPI(request.Get("novels/0/sysTags").Data(map[string]string{"filter": "push"}).Json())
 }

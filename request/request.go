@@ -49,7 +49,8 @@ func (is *HttpUtils) Request() *HttpUtils {
 }
 
 func (is *HttpUtils) Json() gjson.Result {
-	return gjson.Parse(string(is.ResultBody))
+	is.Request()
+	return gjson.ParseBytes(is.ResultBody)
 }
 
 func (is *HttpUtils) Unmarshal(s any) *HttpUtils {

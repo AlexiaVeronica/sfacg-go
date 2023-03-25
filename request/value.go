@@ -37,7 +37,7 @@ func (is *HttpUtils) Add(key string, value string) *HttpUtils {
 	return is
 }
 
-func (is *HttpUtils) AddAll(params map[string]string) *HttpUtils {
+func (is *HttpUtils) Data(params map[string]string) *HttpUtils {
 	for key, value := range params {
 		is.query_data.Add(key, value)
 	}

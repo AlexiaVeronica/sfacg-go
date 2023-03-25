@@ -7,11 +7,11 @@ import (
 )
 
 func NovelCatalogueAPI(NovelID string) *gjson.Result {
-	response := request.Get(fmt.Sprintf("novels/%v/dirs", NovelID)).Add("expand", "originNeedFireMoney").Json()
+	response := request.Get(fmt.Sprintf("novels/%v/dirs", NovelID)).Data(map[string]string{"expand": "originNeedFireMoney"}).Json()
 	return VerifyAPI(response)
 
 }
 
 func NovelContentAPI(chapter_id string) *gjson.Result {
-	return VerifyAPI(request.Get("Chaps/"+chapter_id).Add("expand", "content").Json())
+	return VerifyAPI(request.Get("Chaps/" + chapter_id).Data(map[string]string{"expand": "content"}).Json())
 }

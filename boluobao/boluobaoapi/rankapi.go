@@ -67,5 +67,5 @@ func (r *Rank) RankApi() *gjson.Result {
 		rankPath = "ranks/week/novels"
 	}
 
-	return VerifyAPI(request.Get(rankPath).AddAll(params).Json())
+	return VerifyAPI(request.Get(rankPath).Data(params).Json())
 }

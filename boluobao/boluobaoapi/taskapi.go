@@ -36,7 +36,7 @@ func (task *Task) TaskReadTimeAPI() *gjson.Result {
 
 func (task *Task) TaskReceiveTaskAPI(TaskId string) *gjson.Result {
 	params := map[string]string{"seconds": "3605", "readingDate": task.GetDay(), "entityType": "3"}
-	return VerifyAPI(request.Post("user/tasks/" + TaskId).AddAll(params).Json())
+	return VerifyAPI(request.Post("user/tasks/" + TaskId).Data(params).Json())
 }
 
 func (task *Task) TaskSignInAPI() *gjson.Result {
@@ -47,7 +47,7 @@ func (task *Task) TaskSignInAPI() *gjson.Result {
 }
 
 func (task *Task) TaskListAPI() *gjson.Result {
-	return VerifyAPI(request.Get("user/tasks").AddAll(map[string]string{
+	return VerifyAPI(request.Get("user/tasks").Data(map[string]string{
 		"taskCategory": "1",
 		"package":      "com.sfacg",
 		"deviceToken":  uuid.New().String(),

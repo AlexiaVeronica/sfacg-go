@@ -35,12 +35,11 @@ func Req(path, method string) *HttpUtils {
 	} else {
 		Request.Host = "https://minipapi.sfacg.com/pas/mpapi/"
 	}
-	utils := &HttpUtils{
+	return &HttpUtils{
 		method:     method,
 		query_data: &url.Values{},
 		url:        Request.Host + path,
 		Cookie:     Request.Cookie,
 		Config:     Request,
 	}
-	return utils.Request()
 }
