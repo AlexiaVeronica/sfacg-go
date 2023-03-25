@@ -2,8 +2,7 @@ package boluobaoapi
 
 import (
 	"fmt"
-	"github.com/VeronicaAlexia/BoluobaoAPI/Template"
-	"github.com/VeronicaAlexia/BoluobaoAPI/request"
+	"github.com/VeronicaAlexia/sfacg-go/request"
 	"github.com/tidwall/gjson"
 )
 
@@ -46,6 +45,7 @@ func LoginAccountAPI(username string, password string) string {
 		}
 		return Cookie
 	}
-	fmt.Println("login failed! error:", Template.Login.Status.Msg)
+	//fmt.Println("login failed! error:", Template.Login.Status.Msg)
+	fmt.Println("login failed! error")
 	return ""
 }

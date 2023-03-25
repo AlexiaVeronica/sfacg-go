@@ -2,7 +2,7 @@ package boluobaoapi
 
 import (
 	"fmt"
-	"github.com/VeronicaAlexia/BoluobaoAPI/request"
+	"github.com/VeronicaAlexia/sfacg-go/request"
 	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 	"time"

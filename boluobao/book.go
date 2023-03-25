@@ -2,8 +2,8 @@ package boluobao
 
 import (
 	"fmt"
-	"github.com/VeronicaAlexia/BoluobaoAPI/boluobao/boluobaoapi"
-	"github.com/VeronicaAlexia/BoluobaoAPI/pkg/threading"
+	"github.com/VeronicaAlexia/sfacg-go/boluobao/boluobaoapi"
+	"github.com/VeronicaAlexia/sfacg-go/pkg/threading"
 	"github.com/tidwall/gjson"
 	"strings"
 )
@@ -12,9 +12,12 @@ type NovelInit struct {
 	BookId string
 }
 
-func (book *NovelInit) NovelInfo() *gjson.Result {
-	return boluobaoapi.NovelInformationAPI(book.BookId)
-
+func (book *NovelInit) NovelInfo() gjson.Result {
+	if result := boluobaoapi.NovelInformationAPI(book.BookId); result != nil {
+		return result.Get("data")
+	}
+	fmt.Println("获取小说信息失败,请检查小说ID是否正确:", book.BookId)
+	return gjson.Result{}
 }
 
 func (book *NovelInit) NovelCatalogue() []string {

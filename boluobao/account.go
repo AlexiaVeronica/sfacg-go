@@ -2,7 +2,7 @@ package boluobao
 
 import (
 	"fmt"
-	"github.com/VeronicaAlexia/BoluobaoAPI/boluobao/boluobaoapi"
+	"github.com/VeronicaAlexia/sfacg-go/boluobao/boluobaoapi"
 )
 
 func ShowUserInformation() {

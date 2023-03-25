@@ -2,8 +2,8 @@ package boluobao
 
 import (
 	"fmt"
-	"github.com/VeronicaAlexia/BoluobaoAPI/boluobao/boluobaoapi"
-	"github.com/VeronicaAlexia/BoluobaoAPI/request"
+	"github.com/VeronicaAlexia/sfacg-go/boluobao/boluobaoapi"
+	"github.com/VeronicaAlexia/sfacg-go/request"
 )
 
 func NovelCompleteTas() {

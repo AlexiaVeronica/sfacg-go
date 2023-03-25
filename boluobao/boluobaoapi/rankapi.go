@@ -1,8 +1,7 @@
 package boluobaoapi
 
 import (
-	"github.com/VeronicaAlexia/BoluobaoAPI/Template"
-	"github.com/VeronicaAlexia/BoluobaoAPI/request"
+	"github.com/VeronicaAlexia/sfacg-go/request"
 	"github.com/tidwall/gjson"
 	"strconv"
 )
@@ -36,7 +35,6 @@ func (r *Rank) TypeNameInit() TypeName {
 }
 
 func (r *Rank) RankApi() *gjson.Result {
-	var RankStruct Template.Rank
 	params := map[string]string{"ntype": "origin", "expand": "typeName,tags,sysTags,ticket,latestchapter"}
 	if r.Size == 0 {
 		r.Size = 50 //默认50
@@ -69,5 +67,5 @@ func (r *Rank) RankApi() *gjson.Result {
 		rankPath = "ranks/week/novels"
 	}
 
-	return VerifyAPI(request.Get(rankPath).AddAll(params).Unmarshal(&RankStruct).Json())
+	return VerifyAPI(request.Get(rankPath).AddAll(params).Json())
 }
